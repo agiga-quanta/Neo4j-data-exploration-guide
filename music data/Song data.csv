@@ -1,0 +1,6 @@
+Song ID,Name,Artist,Effect,Type,Playlist ID,Playlist
+SID 1,Humanity,Thomas Bergersen,"Hopeful, fullfillment",Song,PID 1,Orchestral
+SID 2,High C’s,Thomas Bergersen,Complex,Song,"PID 1, PID 2","Orchestral, Background"
+SID 3,Wandering nomad,Cody Francis,Calming,Song,PID 2,Background
+SID 4,Centuries,Fall Out Boy,Hyping,Song,PID 3,Event
+SID 5,Hey jude,The Beatles,Nostalgic,Song,PID 4,Karaoke
