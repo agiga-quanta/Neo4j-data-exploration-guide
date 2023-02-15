@@ -1,5 +1,5 @@
 # Guide to explore a music dataset with neo4j
-This is a guide to exploring and visualizing data with `neo4j`. The dataset used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
+This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
 
 ## Part 1: Introducing the music dataset
 To begin with, below is a meta graph to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:  
@@ -88,7 +88,7 @@ You have now created and are ready to create the dataset in neo4j. Since our dat
 - Follow the path to `Open folder` -> `Imports`  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219154221-54e480fb-cdda-41c3-8741-c506a7677629.png">
 
-- Then you can insert the csv files from the dataset here. Once done, you can close the window.
+- Then you can insert the csv files from the dataset [(here)](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data). Once done, you can close the window.
 
 ### 2.2: Populating the project with the music dataset
 To begin, click `start` to start your project:   
