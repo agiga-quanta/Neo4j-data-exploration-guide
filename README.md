@@ -7,22 +7,63 @@ To begin with, below is a meta graph to show how the three entity types `Song`, 
 
 ### 1.1 Exploring entities:
 There are three types of entities in the dataset:   
-1. Song: The song has a `song_id`, `song_name` of the song, name of the `artist`, and the `emotion` evoked from Users 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912937-3ee1cd55-df2b-46e1-8cb4-1a1e8cfb5b69.png">
+1. Song: The song has a `song_id`, `song_name` of the song, name of the `artist`, and the `emotion` evoked from Users  
+
+| song_id | song_name       | artist           | emotion               | playlist_id  |
+|---------|-----------------|------------------|-----------------------|--------------|
+| SID 1   | Humanity        | Thomas Bergersen | Hopeful, fullfillment | PID 1        |
+| SID 2   | High C’s        | Thomas Bergersen | Complex               | PID 1, PID 2 |
+| SID 3   | Wandering nomad | Cody Francis     | Calming               | PID 2        |
+| SID 4   | Centuries       | Fall Out Boy     | Hyping                | PID 3        |
+| SID 5   | Hey jude        | The Beatles      | Nostalgic             | PID 4        |
 
 2. Playlist: The playlist has a `playlist_id`, the `playlist_name` of the playlist, the overall `purpose` of the playlist, and the number of `times_played` the playlist has been played.   
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218913068-b950cb0d-be53-49c2-baf2-c2ecd4fcf0f6.png">
+
+| playlist_id | playlist_name               | purpose    | times_played | user_id             |
+|-------------|-----------------------------|------------|--------------|---------------------|
+| PID 1       | Neoclassic 2020             | Impressing | 4            | UID 1, UID 3, UID 5 |
+| PID 2       | Coffee house thematic drink | Comforting | 12           | UID 2, UID 6        |
+| PID 3       | Rock collection 2015        | Hyping     | 6            | UID 2, UID 5        |
+| PID 4       | Playlist of 20th century    | Emotional  | 16           | UID 4, UID 7        |
 
 3. User: The user has a `user_id`, their `user_name`, their geolocation in`location`, and the `user_type` of user. This is important because there are two types of users in this case: an individual, and an enterprise.   
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912592-7d22bc48-5776-48bf-a975-734535906796.png">
+
+| user_id | user_name                  | location          | user_type  | playlist_id  |
+|---------|----------------------------|-------------------|------------|--------------|
+| UID 1   | Gon                        | Tokyo, Japan      | Individual | PID 1        |
+| UID 2   | Helen                      | Olympus, Greece   | Individual | PID 2, PID 3 |
+| UID 3   | Ian                        | Paris, France     | Individual | PID 1        |
+| UID 4   | Jack                       | Sydney, Australia | Individual | PID 4        |
+| UID 5   | London Symphony Orchestral | London, England   | Enterprise | PID 1, PID 3 |
+| UID 6   | Cafe au lait               | Toronto, Canada   | Enterprise | PID 2        |
+| UID 7   | Spotify                    | Online            | Enterprise | PID 4        |
 
 ### 1.2 Explaining two relationships
 There are also two relationships between the three types:
-1. `ADDED_TO`: this relationship is between a song and a playlist, showing the song being added to the playlist. Therefore, the relationship will also have property `from` and `to` to show where they begin and end. There is also a property called `added_by`, which indicates who added the song to the playlist.  
-<img width="430" alt="image" src="https://user-images.githubusercontent.com/60938608/218912546-46c4f9a7-5a8d-4892-a4fa-816c99fcc679.png">
+1. `ADDED_TO`: this relationship is between a song and a playlist, showing the song being added to the playlist. Therefore, the relationship will also have property `from` and `to` to show where they begin and end. There is also a property called `added_by`, which indicates who added the song to the playlist.   
+
+| subscribe_relationship_id | from  | to    | recommended_by |
+|---------------------------|-------|-------|----------------|
+| SRID 1                    | UID 1 | PID 1 | Friends        |
+| SRID 2                    | UID 2 | PID 2 | Friends        |
+| SRID 3                    | UID 2 | PID 3 | Discovery      |
+| SRID 4                    | UID 3 | PID 1 | Partnered team |
+| SRID 5                    | UID 4 | PID 4 | Discovery      |
+| SRID 6                    | UID 5 | PID 1 | Partnered team |
+| SRID 7                    | UID 5 | PID 3 | Friends        |
+| SRID 8                    | UID 6 | PID 2 | Partnered team |
+| SRID 9                    | UID 7 | PID 4 | Discovery      |
 
 2. `SUBSCRIBE_TO`: users access the playlists by subscribing to them. Similarly, the relationship will also have property `from` and `to`, to show where they begin and end. Another property of this relationship is `recommended_by`, which shows who recommended the playlist to the user.  
-<img width="450" alt="image" src="https://user-images.githubusercontent.com/60938608/218913041-e5094d50-3b6f-4e85-8645-b73b1d9d724b.png">
+
+| added_relationship_id | from  | to    | added_by |
+|-----------------------|-------|-------|----------|
+| ARID 1                | SID 1 | PID 1 | UID 1    |
+| ARID 2                | SID 2 | PID 1 | UID 2    |
+| ARID 3                | SID 2 | PID 2 | UID 5    |
+| ARID 4                | SID 3 | PID 3 | UID 6    |
+| ARID 5                | SID 4 | PID 4 | UID 7    |
+| ARID 6                | SID 5 | PID 5 | UID 4    |
 
 ### 1.3 Visualizing with all data in the dataset
 In this example, a materialized graph for visualization of the dataset is below, based on the meta graph above.  
