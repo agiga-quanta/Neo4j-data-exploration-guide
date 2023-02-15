@@ -34,19 +34,19 @@ In this example, a detailed visualization of the graph below, where red represen
 Neo4j is a great tool for data exploration, especially for relational datasets such as the music dataset above. To start, create a new project by clicking on the `New` button shown below:  
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634306-f8c94cb6-d9ba-42fd-994f-a96e88edb3ff.png">
 
-Once there, hover your cursor near the title shown below and you will see a pencil icon that allows you to rename the project. 
+Once there, hover your cursor near the title shown below and you will see a pencil icon that allows you to rename the project.  
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634331-4af62d78-18ff-4c3e-abad-71dd567fef8a.png">
 
-After the creation process, click `Add` on the right side and select `Local DBMS` to launch a project that would use a local dataset. It will ask you for a name, and in this case, the name chosen is "Music dataset". 
+After the creation process, click `Add` on the right side and select `Local DBMS` to launch a project that would use a local dataset. It will ask you for a name, and in this case, the name chosen is "Music dataset".  
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634371-8d410aec-ff52-44c0-9a46-586cb821ac9f.png">
 
 You have now created and are ready to create the dataset in neo4j. 
 
 ### 2.2: Creating data 
-To begin, click `start` to start your project:  
+To begin, click `start` to start your project:   
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634818-46e50235-9de7-4487-96e1-2a0b95d0ee2d.png">
 
-Once clicked, the database will take some time to get ready, after that, it should look like this:  
+Once clicked, the database will take some time to get ready, after that, it should look like this:   
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634865-65309d5c-af29-4732-8065-2ab051e12209.png">
 
 Now, click on the `Open` button to open Neo4j Browser, an interface to Neo4j Server. After opening it, your screen should look like this:   
@@ -59,7 +59,7 @@ CREATE CONSTRAINT unique_song IF NOT EXISTS FOR (s:Song) REQUIRE s.Song_id IS NO
 CREATE CONSTRAINT unique_playlist IF NOT EXISTS FOR (p:Playlist) REQUIRE p.Playlist_id IS NODE UNIQUE;
 CREATE CONSTRAINT unique_user IF NOT EXISTS FOR (u:User) REQUIRE u.User_id IS NODE UNIQUE;
 ```
-The final result looks like below: 
+The final result looks like below:  
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218947659-83659644-227e-489d-a518-4d850f62632d.png">
 
 After that, you can now begin creating the three entity types:
@@ -193,7 +193,7 @@ MERGE (:User {
 ```
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218948032-758c8789-8ebc-4207-a930-e3f93405959b.png">
 
-In order to provide the entities with their respective relationships, the code below allows you to link `User` with `Playlist` through `:SUBSCRIBE_TO`, and link `Song` with `Playlist` through `:ADDED_TO`
+In order to provide the entities with their respective relationships, the code below allows you to link `User` with `Playlist` through `:SUBSCRIBE_TO`.
 ```cypher
 //Create :SUBSCRIBE_TO relationship
 MATCH (u:User {user_id: "UID 1"}), (u2:User {user_id: "UID 2"}), (u3:User {user_id: "UID 3"}), (u4:User {user_id: "UID 4"}), (u5:User {user_id: "UID 5"}), (u6:User {user_id: "UID 6"}), (u7:User {user_id: "UID 7"}), (p:Playlist{playlist_id: "PID 1"}), (p2:Playlist{playlist_id: "PID 2"}), (p3:Playlist{playlist_id: "PID 3"}), (p4:Playlist{playlist_id: "PID 4"})
@@ -209,6 +209,7 @@ MERGE (u7)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 9", recommended_by: 
 ```
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218948126-bd971be0-7e1f-4866-9de3-ff7317388aaa.png">
 
+ You can also link `Song` with `Playlist` through `:ADDED_TO`.
 ```cypher
 //Create :ADDED_TO relationship
 MATCH (s:Song {song_id: "SID 1"}), (s2:Song {song_id: "SID 2"}), (s3:Song {song_id: "SID 3"}), (s4:Song {song_id: "SID 4"}), (s5:Song {song_id: "SID 5"}), (p:Playlist{playlist_id: "PID 1"}), (p2:Playlist{playlist_id: "PID 2"}), (p3:Playlist{playlist_id: "PID 3"}), (p4:Playlist{playlist_id: "PID 4"})
@@ -221,34 +222,42 @@ MERGE (s5)-[:ADDED_TO {ar_id: "ARID 6", added_by: "UID 4"}]->(p2)
 ```
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218948238-20199781-7286-4c3b-b5e9-393cb8a8aea8.png">
 
-Finally, the graph is fully created. For those in need, a full written script is available in this repository in XXX folder. You can directly access the query here (insert link)
-Similar to the graph at the end of Part 1 above, the graph can be displayed with the command below, and it should look identical:
+Finally, the graph is fully created. Similar to the graph at the end of Part 1 above, the graph can be displayed with the command below, and it should look identical:
 ```cypher
 MATCH (n) RETURN *
 ```
 <img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/218948332-3ceee971-b8d2-44a7-8485-a97e5468f492.png">
 
-## Part 3: Neo4j queries explore
-Now, to explore the data, we can try to use neo4j to answer the following questions:
+## Part 3: Examining the music dataset
+Now, to examine the dataset, we can try to use neo4j to answer the following questions:
 - How many subscriptions do each playlist have?
-- Which individual/enterprise listens to the song "Hey jude"?
-- What are the songs that the "London Symphony" listens to?
-
-At any time, you can open the `Summary data.png` to verify the answers below. 
-<img width="978" alt="image" src="https://user-images.githubusercontent.com/60938608/218635173-d626d76f-4261-45a1-a206-ac5d4f5be5c3.png">
+- Which individual/enterprise listens to a particular song, such as the song "Hey jude"?
+- Which songs are added to playlists by a random user, for example user "Gon"?
 
 ### How many subscriptions do each playlist have?
-To solve this question, we need to count the users who are `:SUBSCRIBE_TO` all playlists. 
-By deploying the `COUNT()` command, we can list the number of users who listens to each playlist. Another note here is the naming at the header of the table. Since we specify the for the `p.name` of the playlist to be called `playlist`, and the `COUNT(u)` as number_of_subscription, that's how we can change the header. The following two questions will not have this to demonstrate the difference.
-![image](https://user-images.githubusercontent.com/60938608/218635200-c94ebf58-8946-449c-88c1-be7d8d26160f.png)
+To solve this question, the idea is to count how many subscription each playlist has. The code below should explain itneed to count the users who are `:SUBSCRIBE_TO` all playlists. 
+```cypher
+MATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
+RETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription
+```
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/60938608/218953960-42362c85-9bb6-4b08-b3d0-48c23a447667.png">
+From this query, we can see neoclassic 2020 has the most number of subscription.
 
 ### Which individual/enterprise listens to the song "Hey jude"?
 To solve this question, we are looking for `u:User` who has a relationship `:SUBSCRIBE_TO` to the `:Playlist` that also has the relationship `:ADDED_TO` that comes from `:Song` "Hey jude". The convenient thing about neo4j is that you can take that sentence above and put it in a readable phrase such as below, and the result will be shown.
-![image](https://user-images.githubusercontent.com/60938608/218635233-d46beafb-10a1-488c-be77-86eaef354281.png)
+```cypher
+MATCH (s:Song {song_name: "Hey Jude"})-[:ADDED_TO]->(:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
+RETURN u.user_name as user_name
+```
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/60938608/218954016-05768aee-6f23-48d3-8973-b30306f99597.png">
+Turns out both Helen and the Cafe au Lait are subscribed to playlists that has "Hey Jude".
 
-
-### What are the songs that the "London Symphony" listens to?
+### Which songs are added to playlists by a random user, for example user "Gon"?
 To solve this question, we need to search the relationship path again. However, this time it will be the other way around, where we have the user, but now looking for the songs. The query shown below is another way of writing, where you can ask neo4j to search the data pathway without specifying anything besides the user name "London Symphony". 
-![image](https://user-images.githubusercontent.com/60938608/218635255-41cf6b35-366d-4940-8b28-9ea0f19a0bed.png)
+```cypher
+MATCH (u:User {user_name: "Gon"})-[:SUBSCRIBE_TO]->(:Playlist)<-[ar:ADDED_TO {added_by: "UID 1"}]-(s:Song)
+RETURN COUNT(s) as number_of_recommendation
+```
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/60938608/218953869-67fd7836-6942-4d50-816f-4dcb50b55da3.png">
 
 
