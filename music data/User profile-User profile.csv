@@ -1,0 +1,8 @@
+user_id,user_name,location,user_type,playlist_id
+UID 1,Gon,"Tokyo, Japan",Individual,PID 1
+UID 2,Helen,"Olympus, Greece",Individual,"PID 2, PID 3"
+UID 3,Ian,"Paris, France",Individual,PID 1
+UID 4,Jack,"Sydney, Australia",Individual,PID 4
+UID 5,London Symphony Orchestral,"London, England",Enterprise,"PID 1, PID 3"
+UID 6,Cafe au lait,"Toronto, Canada",Enterprise,PID 2
+UID 7,Spotify,Online,Enterprise,PID 4

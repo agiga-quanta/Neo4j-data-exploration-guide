@@ -1,0 +1,6 @@
+song_id,song_name,artist,emotion,playlist_id
+SID 1,Humanity,Thomas Bergersen,"Hopeful, fullfillment",PID 1
+SID 2,High C’s,Thomas Bergersen,Complex,"PID 1, PID 2"
+SID 3,Wandering nomad,Cody Francis,Calming,PID 2
+SID 4,Centuries,Fall Out Boy,Hyping,PID 3
+SID 5,Hey jude,The Beatles,Nostalgic,PID 4
