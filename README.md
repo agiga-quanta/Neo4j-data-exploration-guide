@@ -1,34 +1,35 @@
-# Neo4j-data-exploration-guide
-This is a guide to exploring and visualizing data with `neo4j`. The dataset used here is a music dataset and it has 3 types of entities: `Song` entities,`Playlist` entities, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
+# Guide to explore a music dataset with neo4j
+This is a guide to exploring and visualizing data with `neo4j`. The dataset used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
 
 ## Part 1: Introducing the music dataset
 To begin with, below is a dataset scheme to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:
-<img width="725" alt="image" src="https://user-images.githubusercontent.com/60938608/218878428-2b815f9d-7f32-4e57-9383-5c084693dfb9.png">
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/60938608/218912894-1252df75-4e19-43d2-bafc-6ddd87cdcffa.png">
 
-There are 3 types of entities in the dataset:   
-1. Song: The song has a song_id, name of the song, name of the artist, and the emotion evoked from Users 
-<img width="725" alt="image" src="https://user-images.githubusercontent.com/60938608/218878549-246f748d-99a6-4578-8478-e2423324ac5c.png">
+### 1.1 Exploring entities:
+There are three types of entities in the dataset:   
+1. Song: The song has a `song_id`, `song_name` of the song, name of the `artist`, and the `emotion` evoked from Users 
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912937-3ee1cd55-df2b-46e1-8cb4-1a1e8cfb5b69.png">
 
-2. Playlist: The playlist has a playlist_id, the name of the playlist, the overall purpose of the playlist, and the number of times the playlist has been played.   
-<img width="725" alt="image" src="https://user-images.githubusercontent.com/60938608/218878530-00d45b65-371a-4fb5-b060-23915dbee9f4.png">
+2. Playlist: The playlist has a `playlist_id`, the `playlist_name` of the playlist, the overall `purpose` of the playlist, and the number of `times_played` the playlist has been played.   
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218913068-b950cb0d-be53-49c2-baf2-c2ecd4fcf0f6.png">
 
-3. User: The user has a user_id, their name, their location, and the type of user. This is important because there are two types of users in this case: an individual, and an enterprise.   
+3. User: The user has a `user_id`, their `user_name`, their geolocation in`location`, and the `user_type` of user. This is important because there are two types of users in this case: an individual, and an enterprise.   
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912592-7d22bc48-5776-48bf-a975-734535906796.png">
 
-<img width="725" alt="image" src="https://user-images.githubusercontent.com/60938608/218878647-b399fe34-0018-4938-97ed-c05aa6149a6c.png">
-
-
-
+### 1.2 Explaining two relationships
 There are also 2 relationships between the three types:
 1. `ADDED_TO`: this relationship is between a song and a playlist, showing the song being added to the playlist. Therefore, the relationship will also have property `from` and `to` to show where they begin and end. There is also a property called `added_by`, which indicates who added the song to the playlist. 
-<img width="336" alt="image" src="https://user-images.githubusercontent.com/60938608/218878487-c5fc7be7-845a-49ea-bbf3-4d7e228c849c.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912546-46c4f9a7-5a8d-4892-a4fa-816c99fcc679.png">
 
 2. `SUBSCRIBE_TO`: users access the playlists by subscribing to them. Similarly, the relationship will also have property `from` and `to`, to show where they begin and end. Another property of this relationship is `recommended_by`, which shows who recommended the playlist to the user. 
-<img width="336" alt="image" src="https://user-images.githubusercontent.com/60938608/218878602-e9fa8421-43cd-495a-a9bf-6f60c28c6ba9.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218913041-e5094d50-3b6f-4e85-8645-b73b1d9d724b.png">
+
+### 1.3 Visualizing with all data in dataset
 In this example, a detailed visualization of the graph below, where red represents songs, yellow represents playlists, and blue represents users.  
 
-<img width="1545" alt="image" src="https://user-images.githubusercontent.com/60938608/218878505-e83546de-b6b2-44c8-91da-96a69fbe3a40.png">
-
-
+<img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/218912637-7efaf8b6-dac8-4f3d-9c6b-cf167ba4dbba.png">
+------------------------------
+EXPLAIN MORE HERE
 ------------------------------
 ## Part 2: Neo4j import  
 ### 2.1: Outside of Neo4j
