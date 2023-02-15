@@ -1,5 +1,5 @@
 playlist_id,playlist_name,purpose,times_played,user_id
 PID 1,Neoclassic 2020,Impressing,4,"UID 1, UID 3, UID 5"
-PID 2,Coffee house thematic drink,Comforting,12,"UID 2, UID 6"
+PID 2,Coffee house theme 2012,Comforting,12,"UID 2, UID 6"
 PID 3,Rock collection 2015,Hyping,6,"UID 2, UID 5"
 PID 4,Playlist of 20th century,Emotional,16,"UID 4, UID 7"
