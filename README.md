@@ -2,7 +2,7 @@
 This is a guide to exploring and visualizing data with `neo4j`. The dataset used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
 
 ## Part 1: Introducing the music dataset
-To begin with, below is a dataset scheme to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:
+To begin with, below is a dataset scheme to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:  
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/60938608/219086977-ede3ff1e-0da8-4bde-a696-d6ff61298d0e.png">
 
 ### 1.1 Exploring entities:
