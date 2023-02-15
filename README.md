@@ -81,7 +81,14 @@ Once there, hover your cursor near the title shown below and you will see a penc
 After the creation process, click `Add` on the right side and select `Local DBMS` to launch a project that would use a local dataset. It will ask you for a name, and in this case, the name chosen is "Music dataset".  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218634371-8d410aec-ff52-44c0-9a46-586cb821ac9f.png">
 
-You have now created and are ready to create the dataset in neo4j. 
+You have now created and are ready to create the dataset in neo4j. Since our dataset are already made above in csv files, you can import them into the project by following the steps below:
+- Select the `...` option  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219154173-59613b7a-ecae-4593-a804-e6b31bb924f3.png">
+
+- Follow the path to `Open folder` -> `Imports`  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219154221-54e480fb-cdda-41c3-8741-c506a7677629.png">
+
+- Then you can insert the csv files from the dataset here. Once done, you can close the window.
 
 ### 2.2: Populating the project with the music dataset
 To begin, click `start` to start your project:   
@@ -103,163 +110,71 @@ CREATE CONSTRAINT unique_user IF NOT EXISTS FOR (u:User) REQUIRE u.User_id IS NO
 The final result looks like below:  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218947659-83659644-227e-489d-a518-4d850f62632d.png">
 
-After that, you can now begin creating the three entity types:
+After that, you can now begin populating the project with the three entity types:
 - For `Song` entity:
 ```cypher
-//Create Song entities
-MERGE (:Song {
-    song_id: "SID 1", 
-    song_name: "Humanity",
-    artist: "Thomas Bergersen",
-    emotion: "Hopeful, fulfillment", 
-    playlist_id: "PID 1" 
+//Load song data
+LOAD CSV WITH HEADERS FROM 'file:///song_data.csv' AS sline
+MERGE (s:Song {
+    song_id: sline.song_id, 
+    song_name: sline.song_name,
+    artist: sline.artist,
+    emotion: sline.emotion, 
+    playlist_id: sline.playlist_id 
 })
-MERGE (:Song {
-    song_id: "SID 2", 
-    song_name: "High C's",
-    artist: "Thomas Bergersen",
-    emotion: "Complex", 
-    playlist_id: "PID 1, PID 2" 
-})
-MERGE (:Song {
-    song_id: "SID 3", 
-    song_name: "Wandering nomad",
-    artist: "Cody Francis",
-    emotion: "Calming", 
-    playlist_id: "PID 2" 
-})
-MERGE (:Song {
-    song_id: "SID 4", 
-    song_name: "Centuries",
-    artist: "Fall Out Boy",
-    emotion: "Hyping", 
-    playlist_id: "PID 3" 
-})
-MERGE (:Song {
-    song_id: "SID 5", 
-    song_name: "Hey Jude",
-    artist: "The Beatles",
-    emotion: "Nostalgic", 
-    playlist_id: "PID 4" 
-})
+RETURN s
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218947907-b0f2410f-a5cb-4d00-8397-77cc6a640bb1.png">
 
 - For `Playlist` entity:
 ```cypher
-//Create Playlist entities
-MERGE (:Playlist {
-    playlist_id: "PID 1", 
-    playlist_name: "Neoclassic 2020",
-    purpose: "Impressing",
-    times_played: 4, 
-    user_id: "UID 1, UID 3, UID 5" 
+//Load playlist data
+LOAD CSV WITH HEADERS FROM 'file:///playlists_data.csv' AS pline
+MERGE (p:Playlist {
+    playlist_id: pline.playlist_id, 
+    playlist_name: pline.playlist_name,
+    purpose: pline.purpose,
+    times_played: pline.times_played, 
+    user_id: pline.user_id 
 })
-MERGE (:Playlist {
-    playlist_id: "PID 2", 
-    playlist_name: "Coffee house theme 2012",
-    purpose: "Comforting",
-    times_played: 4, 
-    user_id: "UID 2, UID 6" 
-})
-MERGE (:Playlist {
-    playlist_id: "PID 3", 
-    playlist_name: "Rock collection 2015",
-    purpose: "Hyping",
-    times_played: 4, 
-    user_id: "UID 2, UID 5" 
-})
-MERGE (:Playlist {
-    playlist_id: "PID 4", 
-    playlist_name: "Playlist of 20th century",
-    purpose: "Emotional",
-    times_played: 4, 
-    user_id: "UID 4, UID 7" 
-})
+RETURN p
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218947965-f8c36696-df5f-48f7-8da9-00661c2cb83b.png">
 
 - For `User` entity:
 ```cypher
-//Create User entities
-MERGE (:User {
-    user_id: "UID 1", 
-    user_name: "Gon",
-    location: "Tokyo, Japan",
-    user_type: "Individual", 
-    playlist_id: "PID 1" 
+//Load user data
+LOAD CSV WITH HEADERS FROM 'file:///user_profile.csv' AS uline
+MERGE (u:User {
+    user_id: uline.user_id, 
+    user_name: uline.user_name,
+    location: uline.location, 
+    user_type:uline.user_type,
+    playlist_id: uline.playlist_id` 
 })
-MERGE (:User {
-    user_id: "UID 2", 
-    user_name: "Helen",
-    location: "Olympus, Greece",
-    user_type: "Individual", 
-    playlist_id: "PID 2, PID 3" 
-})
-MERGE (:User {
-    user_id: "UID 3", 
-    user_name: "Ian",
-    location: "Paris, France",
-    user_type: "Individual", 
-    playlist_id: "PID 1" 
-})
-MERGE (:User {
-    user_id: "UID 4", 
-    user_name: "Jack",
-    location: "Sydney, Australia",
-    user_type: "Individual", 
-    playlist_id: "PID 4" 
-})
-MERGE (:User {
-    user_id: "UID 5", 
-    user_name: "London Symphony Orchestral",
-    location: "London, England",
-    user_type: "Enterprise", 
-    playlist_id: "PID 1, PID 3" 
-})
-MERGE (:User {
-    user_id: "UID 6", 
-    user_name: "Cafe au Lait",
-    location: "Toronto, Canada",
-    user_type: "Enterprise", 
-    playlist_id: "PID 2" 
-})
-MERGE (:User {
-    user_id: "UID 7", 
-    user_name: "Spotify",
-    location: "Online",
-    user_type: "Enterprise", 
-    playlist_id: "PID 4" 
-})
+RETURN u
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218948032-758c8789-8ebc-4207-a930-e3f93405959b.png">
 
 In order to provide the entities with their respective relationships, the code below allows you to link `User` with `Playlist` through `:SUBSCRIBE_TO`.
 ```cypher
-//Create :SUBSCRIBE_TO relationship
-MATCH (u:User {user_id: "UID 1"}), (u2:User {user_id: "UID 2"}), (u3:User {user_id: "UID 3"}), (u4:User {user_id: "UID 4"}), (u5:User {user_id: "UID 5"}), (u6:User {user_id: "UID 6"}), (u7:User {user_id: "UID 7"}), (p:Playlist{playlist_id: "PID 1"}), (p2:Playlist{playlist_id: "PID 2"}), (p3:Playlist{playlist_id: "PID 3"}), (p4:Playlist{playlist_id: "PID 4"})
-MERGE (u)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 1", recommended_by: "Friends"}]->(p)
-MERGE (u2)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 2", recommended_by: "Friends"}]->(p2)
-MERGE (u2)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 3", recommended_by: "Discovery"}]->(p3)
-MERGE (u3)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 4", recommended_by: "Partnered team"}]->(p)
-MERGE (u4)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 5", recommended_by: "Discovery"}]->(p4)
-MERGE (u5)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 6", recommended_by: "Partnered team team"}]->(p)
-MERGE (u5)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 7", recommended_by: "Friends"}]->(p3)
-MERGE (u6)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 8", recommended_by: "Partnered team"}]->(p2)
-MERGE (u7)-[:SUBSCRIBE_TO {subscribe_relationship_id: "SRID 9", recommended_by: "Discovery"}]->(p4)
+//Create Subscribe relationship
+LOAD CSV WITH HEADERS FROM 'file:///subscribe_relationship.csv' AS srlines
+UNWIND srlines as srline
+    MATCH (u:User {user_id: srline.from}), (p:Playlist {playlist_id: srline.to})
+    MERGE (u)-[:SUBSCRIBE_TO {subscribe_relationship_id: srline.subscribe_relationship_id, from: srline.from, to: srline.to, recommended_by: srline.recommended_by}]->(p)
+RETURN *
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218948126-bd971be0-7e1f-4866-9de3-ff7317388aaa.png">
 
  You can also link `Song` with `Playlist` through `:ADDED_TO`.
 ```cypher
-//Create :ADDED_TO relationship
-MATCH (s:Song {song_id: "SID 1"}), (s2:Song {song_id: "SID 2"}), (s3:Song {song_id: "SID 3"}), (s4:Song {song_id: "SID 4"}), (s5:Song {song_id: "SID 5"}), (p:Playlist{playlist_id: "PID 1"}), (p2:Playlist{playlist_id: "PID 2"}), (p3:Playlist{playlist_id: "PID 3"}), (p4:Playlist{playlist_id: "PID 4"})
-MERGE (s)-[:ADDED_TO {ar_id: "ARID 1", added_by: "UID 1"}]->(p)
-MERGE (s2)-[:ADDED_TO {ar_id: "ARID 2", added_by: "UID 2"}]->(p)
-MERGE (s2)-[:ADDED_TO {ar_id: "ARID 3", added_by: "UID 5"}]->(p2)
-MERGE (s3)-[:ADDED_TO {ar_id: "ARID 4", added_by: "UID 6"}]->(p3)
-MERGE (s4)-[:ADDED_TO {ar_id: "ARID 5", added_by: "UID 7"}]->(p4)
-MERGE (s5)-[:ADDED_TO {ar_id: "ARID 6", added_by: "UID 4"}]->(p2)
+//Create ADDED_TO relationship
+LOAD CSV WITH HEADERS FROM 'file:///added_relationship.csv' AS arlines
+UNWIND arlines as arline
+    MATCH (s:Song {song_id: arline.from}), (p:Playlist {playlist_id: arline.to})
+    MERGE (s)-[:ADDED_TO {added_relationship_id: arline.added_relationship_id, from: arline.from, to: arline.to, added_by: arline.added_by}]->(p)
+RETURN *
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218948238-20199781-7286-4c3b-b5e9-393cb8a8aea8.png">
 
