@@ -27,7 +27,7 @@ There are also two relationships between the three types:
 ### 1.3 Visualizing with all data in the dataset
 In this example, a materialized graph for visualization of the dataset is below, based on the meta graph above.  
 
-<img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/219087176-f31da908-f458-4896-a751-5c0430b48828.png">
+<img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/219093458-d05d4fea-7694-4475-99b3-98637fa27591.png">
 
 ## Part 2: Setting up dataset in `neo4j`
 ### 2.1: Creating a new project in `neo4j`
