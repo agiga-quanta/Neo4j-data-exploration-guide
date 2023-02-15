@@ -17,7 +17,7 @@ There are three types of entities in the dataset:
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912592-7d22bc48-5776-48bf-a975-734535906796.png">
 
 ### 1.2 Explaining two relationships
-There are also 2 relationships between the three types:
+There are also two relationships between the three types:
 1. `ADDED_TO`: this relationship is between a song and a playlist, showing the song being added to the playlist. Therefore, the relationship will also have property `from` and `to` to show where they begin and end. There is also a property called `added_by`, which indicates who added the song to the playlist.  
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912546-46c4f9a7-5a8d-4892-a4fa-816c99fcc679.png">
 
