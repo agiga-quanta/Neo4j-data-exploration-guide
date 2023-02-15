@@ -3,7 +3,7 @@ This is a guide to exploring and visualizing data with `neo4j`. The dataset used
 
 ## Part 1: Introducing the music dataset
 To begin with, below is a dataset scheme to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:
-<img width="750" alt="image" src="https://user-images.githubusercontent.com/60938608/218912894-1252df75-4e19-43d2-bafc-6ddd87cdcffa.png">
+<img width="750" alt="image" src="https://user-images.githubusercontent.com/60938608/219086977-ede3ff1e-0da8-4bde-a696-d6ff61298d0e.png">
 
 ### 1.1 Exploring entities:
 There are three types of entities in the dataset:   
@@ -19,15 +19,15 @@ There are three types of entities in the dataset:
 ### 1.2 Explaining two relationships
 There are also two relationships between the three types:
 1. `ADDED_TO`: this relationship is between a song and a playlist, showing the song being added to the playlist. Therefore, the relationship will also have property `from` and `to` to show where they begin and end. There is also a property called `added_by`, which indicates who added the song to the playlist.  
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218912546-46c4f9a7-5a8d-4892-a4fa-816c99fcc679.png">
+<img width="430" alt="image" src="https://user-images.githubusercontent.com/60938608/218912546-46c4f9a7-5a8d-4892-a4fa-816c99fcc679.png">
 
 2. `SUBSCRIBE_TO`: users access the playlists by subscribing to them. Similarly, the relationship will also have property `from` and `to`, to show where they begin and end. Another property of this relationship is `recommended_by`, which shows who recommended the playlist to the user.  
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218913041-e5094d50-3b6f-4e85-8645-b73b1d9d724b.png">
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/60938608/218913041-e5094d50-3b6f-4e85-8645-b73b1d9d724b.png">
 
 ### 1.3 Visualizing with all data in the dataset
 In this example, a detailed visualization of the graph below, where red represents songs, yellow represents playlists, and blue represents users.  
 
-<img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/218912637-7efaf8b6-dac8-4f3d-9c6b-cf167ba4dbba.png">
+<img width="1200" alt="image" src="https://user-images.githubusercontent.com/60938608/219087176-f31da908-f458-4896-a751-5c0430b48828.png">
 
 ## Part 2: Setting up dataset in `neo4j`
 ### 2.1: Creating a new project in `neo4j`
@@ -42,7 +42,7 @@ After the creation process, click `Add` on the right side and select `Local DBMS
 
 You have now created and are ready to create the dataset in neo4j. 
 
-### 2.2: Creating data 
+### 2.2: Populating the project with the music dataset
 To begin, click `start` to start your project:   
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/60938608/218634818-46e50235-9de7-4487-96e1-2a0b95d0ee2d.png">
 
