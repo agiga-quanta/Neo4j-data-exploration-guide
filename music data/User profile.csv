@@ -1,8 +1,0 @@
-User ID,Name,Session Length (h),Location,Type,Playlist ID,Playlist
-UID 1,Gon,3.5,"Tokyo, Japan",Individual,PID 1,Orchestral
-UID 2,Helen,2,"Olympus, Greece",Individual,"PID 2, PID 3","Background, Event"
-UID 3,Ian,1,"Paris, France",Individual,PID 1,Orchestral
-UID 4,Jack,4,"Sydney, Australia",Individual,PID 4,Singalong
-UID 5,London Symphony,4,"London, England",Enterprise,"PID 1, PID 3","Orchestral, Event"
-UID 6,Cafe au lait,12,"Toronto, Canada",Enterprise,PID 2,Background
-UID 7,Spotify,1,Online,Enterprise,PID 4,Singalong
