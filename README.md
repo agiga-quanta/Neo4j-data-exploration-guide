@@ -1,5 +1,5 @@
 # Guide to explore a music dataset with neo4j
-This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`. A new section has also been added to show how to visualize our data with neodash - a dashboard builder built for neo4j desktop.
+This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`. A new section has also been added to show how to visualize our data with `neodash` - a dashboard builder built for neo4j desktop.
 
 ## Part 1: Introducing the music dataset
 To begin with, below is a meta graph to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:  
@@ -216,23 +216,23 @@ RETURN COUNT(s) as number_of_recommendation
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218953869-67fd7836-6942-4d50-816f-4dcb50b55da3.png">
 
-## Part 4: Building dashboard with [`NeoDash`](https://neo4j.com/developer-blog/neodash-2-0-a-brand-new-way-to-visualize-neo4j/#:~:text=Once%20you%E2%80%99re%20done%20building%20your%20dashboard%2C%20you%20can,same%20database%20can%20load%20your%20dashboard%20into%20NeoDash.)
-> `NeoDash` is an open-scource dashboard editor made in expanding neo4j's data. Specifically developing into creating dashboard, `NeoDash` allows you to group multiple visualizations, in many formats such as tabular, charts, maps, and more, while also capable of being shared with others.
-### 4.1 Installing `NeoDash`
-Firstly, to install `NeoDash`, click on the "four square" button on the left and then select `Graph Apps Gallery`:
+## Part 4: Building dashboard with [`neodash`](https://neo4j.com/developer-blog/neodash-2-0-a-brand-new-way-to-visualize-neo4j/#:~:text=Once%20you%E2%80%99re%20done%20building%20your%20dashboard%2C%20you%20can,same%20database%20can%20load%20your%20dashboard%20into%20NeoDash.)
+> `neodash` is an open-scource dashboard editor made in expanding neo4j's data. Specifically developing into creating dashboard, `neodash` allows you to group multiple visualizations, in many formats such as tabular, charts, maps, and more, while also capable of being shared with others.
+### 4.1 Installing `neodash`
+Firstly, to install `neodash`, click on the "four square" button on the left and then select `Graph Apps Gallery`:
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219416884-921c7358-bf54-4ca5-9e9e-cce926dcf577.png">
 
-Secondly, locate `NeoDash` app and then click install. After the installation is complete, you can close the window
+Secondly, locate `neodash` app and then click install. After the installation is complete, you can close the window
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219417056-02384468-b877-490a-a392-b0ed79086944.png">
 
-Now on neo4j desktop, you should see a new app available for you: `NeoDash`
+Now on neo4j desktop, you should see a new app available for you: `neodash`
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219417634-d0ddbdfd-211e-4723-bc8f-addebd895aa6.png">
 
-### 4.2 Launching `NeoDash`
+### 4.2 Launching `neodash`
 The first time using this app, a warning message will pop up, asking for permission to access the graph data:
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219418257-95620132-52ad-42e3-b857-7106e0ec2539.png">
 
-You can click Yes. The data it can access are only those limited to the project "Music dataset". When opening, `NeoDash` will ask if you want to create a new dashboard, or load an existing dashboard, or connect to neo4j desktop. Since we are starting new, but we already have the data in neo4j desktop project, we can select `Connect to Neo4j Desktop`.  
+You can click Yes. The data it can access are only those limited to the project "Music dataset". When opening, `neodash` will ask if you want to create a new dashboard, or load an existing dashboard, or connect to neo4j desktop. Since we are starting new, but we already have the data in neo4j desktop project, we can select `Connect to Neo4j Desktop`.  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219420528-f66a9b1e-493e-4f26-9e04-ca1e3e9e4433.png">  
 
 Once inside, you will be greeted with the `Main Page`, where there are two reports. The left one tells you some basic instruction on how to edit and run query, while the right one shows the dataset! 
@@ -277,7 +277,7 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 The save option will then show that by saving into neo4j, the entire information of the dashboard will be saved into one node. This is great because now when you wishes to share the dataset and what you have visualized, you can send them the entire dataset, allowing others not only to view your dashboard, but also explore more because they have the dataset too.   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428675-a9b23c80-6121-4259-8a2d-dea9088567b6.png">
 
-In neo4j desktop, if you open the browser again, and click on database information in the top left, you can see `NeoDash` now is a node here  
+In neo4j desktop, if you open the browser again, and click on database information in the top left, you can see `neodash` now is a node here  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428724-d553ce1d-0569-4210-8b3e-73ee4e764d34.png">
 
 And others can access the dashboard just by connecting to `neo4j desktop`. 
