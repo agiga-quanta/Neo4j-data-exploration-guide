@@ -235,5 +235,72 @@ The first time using this app, a warning message will pop up, asking for permiss
 You can click Yes. The data it can access are only those limited to the project "Music dataset". When opening, `NeoDash` will ask if you want to create a new dashboard, or load an existing dashboard, or connect to neo4j desktop. Since we are starting new, but we already have the data in neo4j desktop project, we can select `Connect to Neo4j Desktop`.   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219420528-f66a9b1e-493e-4f26-9e04-ca1e3e9e4433.png">  
 
-Once inside, you will be greeted with the `Main Page`, where there are two reports. The left one tells you some basic instruction on how to edit and run query, while the right one shows the dataset!   
-<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219421192-b49259f1-8677-46e3-bdf9-5933832743d3.png">
+Once inside, you will be greeted with the following screen:  
+(show arrival screen)  
+At the top, in the blue bar is where you can type the `Dashboard Name`
+(show point to dashboard name)
+In a dashboard, you can have many `pages`. Usually these are for separating each of your topic, so readers do not feel overwhelmed. You start at the `Main Page` in this case. 
+(show point to page)
+In a page, there are these square boxes that are called `reports`. In this case, you start with two reports: 
+(show the two reports)
+The left one tells you some basic instruction on how to edit and run query while the right one shows the dataset!   
+
+In each report, you can do multiple things:
+
+1. Edit the name of the report. By clicking on the name, you can type to change the name of the report
+(show name)
+
+2. Edit the size of the report. You can click, hold and drag the corner of the report to change the size. 
+(show bottom right mark)
+
+3. Move the report around the dashboard. By clicking and holding, you can move the report around any where in the dashboard.
+(show top left mark)
+3.1 Edit query
+
+3.2 Edit result type
+When editing the query of the report, you can also choose which style of visualization to be displayed. The following graph has the same query showed in different ways. The cypher used here is from question [3.1](3.1) mentioned.   
+```cypher
+MATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
+RETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription
+```
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219425032-324c17c9-b87d-48f4-aab4-6d7545f778bd.png">
+
+Once you click save on the top right of the report, the reports can look like this:   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219426947-087cb95e-fa08-4263-9144-a8081c671bba.png">
+
+3.3 Clone or delete
+
+4. Edit the query to change the content displaying.
+(show editing, take the 3.1 in here)
+
+5. Change the label of the content displayed in the report. Once click, it will drop down a menu for you to choose which label/properties you want the content to show.
+(Show the drop down menu of single item, post change))
+
+
+
+### 4.3 Saving dashboard information for sharing
+#### 4.3.1 Saving dashboard to neo4j project
+(Explain the reason and pros)
+On the left column, you can save the dashboard by clicking the save icon.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219427487-0049a058-b41e-43b9-afe6-77c78b64bfaf.png">
+
+You will then be asked whether to save the dashboard into neo4j, or into a separate file. In this guide, we will be go with `save to neo4j`.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428081-94dd63a6-bce5-4cbf-a38a-4d7d708c8542.png">
+
+The save option will then show that by saving into neo4j, the entire information of the dashboard will be saved into one node. This is great because now when you wishes to share the dataset and what you have visualized, you can send them the entire dataset, allowing others not only to view your dashboard, but also explore more because they have the dataset too.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428675-a9b23c80-6121-4259-8a2d-dea9088567b6.png">
+
+In neo4j desktop, if you open the browser again, and click on database information in the top left, you can see `NeoDash` now is a node here  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428724-d553ce1d-0569-4210-8b3e-73ee4e764d34.png">
+
+#### 4.3.2 Saving dashboard to a `json` file
+
+Show how to load
+And others can access the dashboard just by connecting to `neo4j desktop`. 
+
+
+
+
+
+
+
