@@ -1,5 +1,5 @@
 # Guide to explore a music dataset with neo4j
-This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`.
+This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`. A new section has also been added to show how to visualize our data with neodash - a dashboard builder built for neo4j desktop.
 
 ## Part 1: Introducing the music dataset
 To begin with, below is a meta graph to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:  
@@ -190,7 +190,7 @@ Now, to examine the dataset, we can try to use neo4j to answer the following que
 - Which individual/enterprise listens to a particular song, such as the song "Hey jude"?
 - Which songs are added to playlists by a random user, for example user "Gon"?
 
-### How many subscriptions do each playlist have?
+### 3.1 How many subscriptions do each playlist have?
 To solve this question, the idea is to count how many subscription each playlist has. The code below should explain itneed to count the users who are `:SUBSCRIBE_TO` all playlists. 
 ```cypher
 MATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
@@ -199,7 +199,7 @@ RETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218953960-42362c85-9bb6-4b08-b3d0-48c23a447667.png">
 From this query, we can see neoclassic 2020 has the most number of subscription.
 
-### Which individual/enterprise listens to the song "Hey jude"?
+### 3.2 Which individual/enterprise listens to the song "Hey jude"?
 To solve this question, we are looking for `u:User` who has a relationship `:SUBSCRIBE_TO` to the `:Playlist` that also has the relationship `:ADDED_TO` that comes from `:Song` "Hey jude". The convenient thing about neo4j is that you can take that sentence above and put it in a readable phrase such as below, and the result will be shown.
 ```cypher
 MATCH (s:Song {song_name: "Hey Jude"})-[:ADDED_TO]->(:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
@@ -208,7 +208,7 @@ RETURN u.user_name as user_name
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218954016-05768aee-6f23-48d3-8973-b30306f99597.png">
 Turns out both Helen and the Cafe au Lait are subscribed to playlists that has "Hey Jude".
 
-### Which songs are added to playlists by a random user, for example user "Gon"?
+### 3.3 Which songs are added to playlists by a random user, for example user "Gon"?
 To solve this question, we need to search the relationship path again. However, this time it will be the other way around, where we have the user, but now looking for the songs. The query shown below is another way of writing, where you can ask neo4j to search the data pathway without specifying anything besides the user name "London Symphony". 
 ```cypher
 MATCH (u:User {user_name: "Gon"})-[:SUBSCRIBE_TO]->(:Playlist)<-[ar:ADDED_TO {added_by: "UID 1"}]-(s:Song)
@@ -216,4 +216,68 @@ RETURN COUNT(s) as number_of_recommendation
 ```
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/218953869-67fd7836-6942-4d50-816f-4dcb50b55da3.png">
 
+## Part 4: Building dashboard with [`NeoDash`](https://neo4j.com/developer-blog/neodash-2-0-a-brand-new-way-to-visualize-neo4j/#:~:text=Once%20you%E2%80%99re%20done%20building%20your%20dashboard%2C%20you%20can,same%20database%20can%20load%20your%20dashboard%20into%20NeoDash.)
+> `NeoDash` is an open-scource dashboard editor made in expanding neo4j's data. Specifically developing into creating dashboard, `NeoDash` allows you to group multiple visualizations, in many formats such as tabular, charts, maps, and more, while also capable of being shared with others.
+### 4.1 Installing `NeoDash`
+Firstly, to install `NeoDash`, click on the "four square" button on the left and then select `Graph Apps Gallery`:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219416884-921c7358-bf54-4ca5-9e9e-cce926dcf577.png">
 
+Secondly, locate `NeoDash` app and then click install. After the installation is complete, you can close the window
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219417056-02384468-b877-490a-a392-b0ed79086944.png">
+
+Now on neo4j desktop, you should see a new app available for you: `NeoDash`
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219417634-d0ddbdfd-211e-4723-bc8f-addebd895aa6.png">
+
+### 4.2 Launching `NeoDash`
+The first time using this app, a warning message will pop up, asking for permission to access the graph data:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219418257-95620132-52ad-42e3-b857-7106e0ec2539.png">
+
+You can click Yes. The data it can access are only those limited to the project "Music dataset". When opening, `NeoDash` will ask if you want to create a new dashboard, or load an existing dashboard, or connect to neo4j desktop. Since we are starting new, but we already have the data in neo4j desktop project, we can select `Connect to Neo4j Desktop`.  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219420528-f66a9b1e-493e-4f26-9e04-ca1e3e9e4433.png">  
+
+Once inside, you will be greeted with the `Main Page`, where there are two reports. The left one tells you some basic instruction on how to edit and run query, while the right one shows the dataset! 
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219421192-b49259f1-8677-46e3-bdf9-5933832743d3.png">
+
+To name the dashboard, you can click on the top blue section and rename it however you want:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219425490-c1a7d2d4-b465-4fd2-9991-d4db718d9023.png">
+
+Within any report, you can do five things:
+1. Edit the name of the report. By clicking on the name, you can type to change the name of the report
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219421678-ab496588-bd3d-4817-a80d-9ea4fefaefe9.png">
+
+2. Edit the size of the report. You can click, hold and drag the corner of the report to change the size. 
+<img width="640" alt="image" src="(https://user-images.githubusercontent.com/60938608/219421811-fdd59844-7769-4f1c-99d7-bf1688f41538.png)">
+
+3. Edit the query to change the content displaying.
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219421468-e0bbdf1b-f08f-479a-8c95-99b11fb70d0e.png">
+
+4. Move the report around the dashboard. By clicking and holding, you can move the report around any where in the dashboard.
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219423579-b33b78df-1767-4691-adb7-26a1d557912b.png">
+
+5. Change the label of the content displayed in the report. Once click, it will drop down a menu for you to choose which label/properties you want the content to show.
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219426179-aa242e9f-35be-4b99-bec0-a86400185848.png">
+
+When editing the query of the report, you can also choose which style of visualization to be displayed. The following graph has the same query showed in different ways. The cypher used here is from question 3.1 mentioned.   
+```cypher
+MATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
+RETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription
+```
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219425032-324c17c9-b87d-48f4-aab4-6d7545f778bd.png">
+
+Once you click save on the top right of the report, the reports can look like this:   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219426947-087cb95e-fa08-4263-9144-a8081c671bba.png">
+
+### 4.3 Saving dashboard information for sharing
+On the left column, you can save the dashboard by clicking the save icon.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219427487-0049a058-b41e-43b9-afe6-77c78b64bfaf.png">
+
+You will then be asked whether to save the dashboard into neo4j, or into a separate file. In this guide, we will be go with `save to neo4j`.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428081-94dd63a6-bce5-4cbf-a38a-4d7d708c8542.png">
+
+The save option will then show that by saving into neo4j, the entire information of the dashboard will be saved into one node. This is great because now when you wishes to share the dataset and what you have visualized, you can send them the entire dataset, allowing others not only to view your dashboard, but also explore more because they have the dataset too.   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428675-a9b23c80-6121-4259-8a2d-dea9088567b6.png">
+
+In neo4j desktop, if you open the browser again, and click on database information in the top left, you can see `NeoDash` now is a node here  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219428724-d553ce1d-0569-4210-8b3e-73ee4e764d34.png">
+
+And others can access the dashboard just by connecting to `neo4j desktop`. 
