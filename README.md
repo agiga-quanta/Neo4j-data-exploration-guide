@@ -318,8 +318,8 @@ On the left column, you can load the dashboard by clicking the icon shown below:
 2. NeoDash will show you a window where you can open the "Music dashboard.json" file. 
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219781493-6c4469f9-0ad0-470f-94b2-12b42a5c51af.png">  
 
-After you chose your option, the dashboard json file is loaded, and then you can click on `LOAD DASHBOARD` on the right to load dashboard into `NeoDash`.
-<img width="640" alt="image" src="(https://user-images.githubusercontent.com/60938608/219783680-3f9b5816-9c6e-4470-80ac-7a40a32b7b7e.png">
+After you chose your option, the dashboard json file is loaded, and then you can click on `LOAD DASHBOARD` on the right to load dashboard into `NeoDash`.  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219783680-3f9b5816-9c6e-4470-80ac-7a40a32b7b7e.png">
 
 All dashboards that have been made will be shown immediately.
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219784219-3d72a03e-62b5-42c8-966a-7f6d7bee36c9.png">
