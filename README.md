@@ -302,7 +302,7 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png">
 
 #### 4.3.2 Loading a dashboard 
-When you already have a dashboard available, you can either access it from loading dashboard from neo4j, or from json files available. 
+When you already have a dashboard available, you can either access it from loading dashboard from neo4j, or from json files available. An example of a dashboard is available here: [`music_dashboard.json`](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/blob/main/music_data/Music%20dataset%20dashboard.json). This is a dashboard of queries from part 3.
 On the left column, you can load the dashboard by clicking the icon shown below:   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219776702-618eec2a-78c8-49e5-8674-2ce0e82f26bc.png">
 
