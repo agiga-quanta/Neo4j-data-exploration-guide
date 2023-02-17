@@ -302,21 +302,23 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png">
 
 #### 4.3.2 Loading a dashboard 
-When you already have a dashboard available, you can either access it from loading dashboard from neo4j, or from json files available. An example of a dashboard is available here: [`music_dashboard.json`](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/blob/main/music_data/Music%20dataset%20dashboard.json). This is a dashboard of queries from part 3.
+When you already have a dashboard available, you can either access it from loading dashboard from neo4j, or from json files available. An example of a dashboard is available here: [`music_dashboard.json`](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/blob/main/music_data/Music%20dataset%20dashboard.json). This is a dashboard of queries from part 3. You can download the file for this part.
+
 On the left column, you can load the dashboard by clicking the icon shown below:   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219776702-618eec2a-78c8-49e5-8674-2ce0e82f26bc.png">
 
-##### 4.3.2.1 Loading a dashboard from Neo4j
+##### 4.3.2.1 Loading a dashboard from file
+1. If you are loading from a json file, select the `Select from File` option:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219780754-439d2d66-3842-4231-8f7e-fb9948ecc201.png">  
+2. NeoDash will show you a window where you can open the "music_dashboard.json" file you downloaded. 
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219781493-6c4469f9-0ad0-470f-94b2-12b42a5c51af.png">  
+
+
+##### 4.3.2.2 Loading a dashboard from Neo4j
 1. If you are loading from a neo4j project, select the `Select from Neo4j` option:  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219778025-62060ab0-4928-4278-b73e-5315794b4a1e.png">  
 2. NeoDash will automatic search for a `NeoDash` node in your project and show in the table below. You can then select the option on the right and launch the dashboard
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219778785-b9fa733d-5eb5-4412-ba85-89e6fb52a556.png">  
-
-##### 4.3.2.2 Loading a dashboard from File
-1. If you are loading from a neo4j project, select the `Select from File` option:
-<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219780754-439d2d66-3842-4231-8f7e-fb9948ecc201.png">  
-2. NeoDash will show you a window where you can open the "Music dashboard.json" file. 
-<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219781493-6c4469f9-0ad0-470f-94b2-12b42a5c51af.png">  
 
 After you chose your option, the dashboard json file is loaded, and then you can click on `LOAD DASHBOARD` on the right to load dashboard into `NeoDash`.  
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219783680-3f9b5816-9c6e-4470-80ac-7a40a32b7b7e.png">
