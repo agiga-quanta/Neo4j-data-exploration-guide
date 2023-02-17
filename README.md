@@ -292,12 +292,14 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 ##### 4.3.1.1 Saving dashboard to `Neo4j`
 - If you want to `Save to Neo4j`, then select that option as below: 
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219759943-0c084ddd-cb70-4537-a920-55cf324c8780.png">  
+
 - You will then be shown a node layout to how the dashboard is saved in the neo4j project. Select `Save` and the dashboard is now part of the project.
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219760410-492f1eb3-da9d-411b-be2c-772990eb3b91.png">
 
 ##### 4.3.1.2 Saving dashboard to file
 - If you want to `Save to File`, then select the option below:
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219759886-9adb0bba-478f-4351-bf79-fc27fe680071.png">  
+
 - You will then be shown the default saving location. Navigate to where you want to save and click save as below. The file name by default would be your dashboard title. The resulted saved file will be `.json` format. Our example will save it as "Music dashboard.json"
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png">
 
