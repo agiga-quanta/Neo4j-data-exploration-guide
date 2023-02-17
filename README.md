@@ -289,7 +289,7 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 |-----|---------------|---------------|
 | Distinct difference | You can quickly access the dashboard through NeoDash by connecting to Neo4j Desktop, NeoDash will search the project for the node and let you connect easily. This is benefitial if you are focusing working on one dataset at a time, and need to access the data directly.  | You can choose which dashboard you want to work on. This is a boon for those who do not have access to the data directly, and only work on creating dashboard |
 | Choose saving option | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219759943-0c084ddd-cb70-4537-a920-55cf324c8780.png"> | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219759886-9adb0bba-478f-4351-bf79-fc27fe680071.png"> |
-| Save the dashboard | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219760410-492f1eb3-da9d-411b-be2c-772990eb3b91.png"> | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png"> |
+| Save the dashboard | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219760410-492f1eb3-da9d-411b-be2c-772990eb3b91.png"> | <img width="360" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png"> |
 
 #### 4.3.2 Loading a dashboard 
 
