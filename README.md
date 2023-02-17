@@ -288,18 +288,39 @@ You will then be asked whether to save the dashboard into neo4j, or into a separ
 || `Save to Neo4j` | `Save to File`  | 
 |-----|---------------|---------------|
 | Distinct difference | You can quickly access the dashboard through NeoDash by connecting to Neo4j Desktop, NeoDash will search the project for the node and let you connect easily. This is benefitial if you are focusing working on one dataset at a time, and need to access the data directly.  | You can choose which dashboard you want to work on. This is a boon for those who do not have access to the data directly, and only work on creating dashboard |
-| Choose saving option | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219759943-0c084ddd-cb70-4537-a920-55cf324c8780.png"> | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219759886-9adb0bba-478f-4351-bf79-fc27fe680071.png"> |
-| Save the dashboard | <img width="320" alt="image" src="https://user-images.githubusercontent.com/60938608/219760410-492f1eb3-da9d-411b-be2c-772990eb3b91.png"> | <img width="360" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png"> |
+
+##### 4.3.1.1 Saving dashboard to `Neo4j`
+- If you want to `Save to Neo4j`, then select that option as below: 
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219759943-0c084ddd-cb70-4537-a920-55cf324c8780.png">  
+- You will then be shown a node layout to how the dashboard is saved in the neo4j project. Select `Save` and the dashboard is now part of the project.
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219760410-492f1eb3-da9d-411b-be2c-772990eb3b91.png">
+
+##### 4.3.1.2 Saving dashboard to file
+- If you want to `Save to File`, then select the option below:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219759886-9adb0bba-478f-4351-bf79-fc27fe680071.png">  
+- You will then be shown the default saving location. Navigate to where you want to save and click save as below. The file name by default would be your dashboard title. The resulted saved file will be `.json` format. Our example will save it as "Music dashboard.json"
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219763518-07ce51a8-c524-4aa9-ae66-a1f1bbd8d1c1.png">
 
 #### 4.3.2 Loading a dashboard 
+When you already have a dashboard available, you can either access it from loading dashboard from neo4j, or from json files available. 
+On the left column, you can load the dashboard by clicking the icon shown below:   
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219776702-618eec2a-78c8-49e5-8674-2ce0e82f26bc.png">
 
-Show how to load
+##### 4.3.2.1 Loading a dashboard from Neo4j
+1. If you are loading from a neo4j project, select the `Select from Neo4j` option:  
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219778025-62060ab0-4928-4278-b73e-5315794b4a1e.png">  
+2. NeoDash will automatic search for a `NeoDash` node in your project and show in the table below. You can then select the option on the right and launch the dashboard
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219778785-b9fa733d-5eb5-4412-ba85-89e6fb52a556.png">  
 
-And others can access the dashboard just by connecting to `neo4j desktop`. 
+##### 4.3.2.2 Loading a dashboard from File
+1. If you are loading from a neo4j project, select the `Select from File` option:
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219780754-439d2d66-3842-4231-8f7e-fb9948ecc201.png">  
+2. NeoDash will show you a window where you can open the "Music dashboard.json" file. 
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219781493-6c4469f9-0ad0-470f-94b2-12b42a5c51af.png">  
 
+After you chose your option, the dashboard json file is loaded, and then you can click on `LOAD DASHBOARD` on the right to load dashboard into `NeoDash`.
+<img width="640" alt="image" src="(https://user-images.githubusercontent.com/60938608/219783680-3f9b5816-9c6e-4470-80ac-7a40a32b7b7e.png">
 
-
-
-
-
+All dashboards that have been made will be shown immediately.
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219784219-3d72a03e-62b5-42c8-966a-7f6d7bee36c9.png">
 
