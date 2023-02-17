@@ -1,0 +1,123 @@
+{
+  "title": "Music dataset visualization",
+  "version": "2.2",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {}
+  },
+  "pages": [
+    {
+      "title": "Main Page",
+      "reports": [
+        {
+          "title": "Playlist's subscription",
+          "query": "//Show the number of subscription per playlist\nMATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)\nRETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription",
+          "width": 3,
+          "height": 2,
+          "x": 4,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Playlist's subscription graph",
+          "query": "//Show the number of subscription per playlist\nMATCH (p:Playlist)<-[sr:SUBSCRIBE_TO]-(u:User)\nRETURN * ",
+          "width": 3,
+          "height": 2,
+          "x": 7,
+          "y": 0,
+          "type": "graph",
+          "selection": {
+            "Playlist": "playlist_name",
+            "User": "user_name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Who listens to Hey Jude?",
+          "query": "MATCH (s:Song {song_name: \"Hey Jude\"})-[:ADDED_TO]->(:Playlist)<-[:SUBSCRIBE_TO]-(u:User)\nRETURN u.user_name as user_name\n",
+          "width": 3,
+          "height": 2,
+          "x": 0,
+          "y": 2,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Who listens to Hey Jude?",
+          "query": "MATCH (s:Song {song_name: \"Hey Jude\"})-[ar:ADDED_TO]->(p:Playlist)<-[sr:SUBSCRIBE_TO]-(u:User)\nRETURN *\n",
+          "width": 3,
+          "height": 2,
+          "x": 3,
+          "y": 2,
+          "type": "graph",
+          "selection": {
+            "Playlist": "playlist_name",
+            "Song": "song_name",
+            "User": "user_name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Playlist's subscription",
+          "query": "//Show the number of subscription per playlist\nMATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)\nRETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription",
+          "width": 4,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "pie",
+          "selection": {
+            "index": "playlist_name",
+            "value": "number_of_subscription",
+            "key": "(none)"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Music dataset",
+          "query": "MATCH (n)-[r]-(p) return *\n\n",
+          "width": 4,
+          "height": 2,
+          "x": 0,
+          "y": 4,
+          "type": "graph",
+          "selection": {
+            "Song": "song_name",
+            "Playlist": "playlist_name",
+            "User": "user_name"
+          },
+          "settings": {
+            "nodePositions": {}
+          }
+        },
+        {
+          "title": "Which songs did Gon added to playlist?",
+          "query": "MATCH (u:User {user_name: \"Gon\"})-[:SUBSCRIBE_TO]->(p:Playlist)<-[ar:ADDED_TO {added_by: \"UID 1\"}]-(s:Song)\nRETURN s.song_name as song_name, p.playlist_name as playlist_name\n\n\n",
+          "width": 4,
+          "height": 2,
+          "x": 6,
+          "y": 2,
+          "type": "table",
+          "selection": {},
+          "settings": {}
+        }
+      ]
+    }
+  ],
+  "parameters": {},
+  "extensions": {}
+}
