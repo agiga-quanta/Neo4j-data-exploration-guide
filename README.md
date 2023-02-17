@@ -235,6 +235,8 @@ The first time using this app, a warning message will pop up, asking for permiss
 You can click Yes. The data it can access are only those limited to the project "Music dataset". When opening, `NeoDash` will ask if you want to create a new dashboard, or load an existing dashboard, or connect to neo4j desktop. Since we are starting new, but we already have the data in neo4j desktop project, we can select `Connect to Neo4j Desktop`.   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219420528-f66a9b1e-493e-4f26-9e04-ca1e3e9e4433.png">  
 
+---------------------------------------
+
 Once inside, you will be greeted with the following screen:  
 (show arrival screen)  
 At the top, in the blue bar is where you can type the `Dashboard Name`
@@ -255,9 +257,9 @@ In each report, you can do multiple things:
 
 3. Move the report around the dashboard. By clicking and holding, you can move the report around any where in the dashboard.
 (show top left mark)
-3.1 Edit query
-
-3.2 Edit result type
+    - Edit query
+    
+    - Edit result type
 When editing the query of the report, you can also choose which style of visualization to be displayed. The following graph has the same query showed in different ways. The cypher used here is from question [3.1](3.1) mentioned.   
 ```cypher
 MATCH (p:Playlist)<-[:SUBSCRIBE_TO]-(u:User)
@@ -268,7 +270,8 @@ RETURN  p.playlist_name as playlist_name, COUNT(u) as number_of_subscription
 Once you click save on the top right of the report, the reports can look like this:   
 <img width="640" alt="image" src="https://user-images.githubusercontent.com/60938608/219426947-087cb95e-fa08-4263-9144-a8081c671bba.png">
 
-3.3 Clone or delete
+
+    - Clone or delete
 
 4. Edit the query to change the content displaying.
 (show editing, take the 3.1 in here)
