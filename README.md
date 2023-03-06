@@ -1,6 +1,8 @@
 # Guide to explore a music dataset with neo4j
 This is a guide to exploring and visualizing data with `neo4j`. The [dataset](https://github.com/agiga-quanta/Neo4j-data-exploration-guide/tree/main/music_data) used here is a music dataset that has three types of entities: `Song`,`Playlist`, and `User` entities. This guide shows a step-by-step procedure for retrieving, setting up, and examining the dataset in `neo4j`. A new section has also been added to show how to visualize our data with `NeoDash` - a dashboard builder built for neo4j desktop.
 
+This guide is also included in a youtube playlist showing how to download and install `neo4j` Desktop [here](https://youtube.com/playlist?list=PL3KBtMOTv6gM73L33Ie1kHHKp6SXbEpyH)
+
 ## Part 1: Introducing the music dataset
 To begin with, below is a meta graph to show how the three entity types `Song`, `Playlist`, and `User` are related to each other:  
 <img width="750" alt="image" src="https://user-images.githubusercontent.com/60938608/219086977-ede3ff1e-0da8-4bde-a696-d6ff61298d0e.png">
